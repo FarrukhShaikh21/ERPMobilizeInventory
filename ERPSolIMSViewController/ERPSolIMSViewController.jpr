@@ -319,15 +319,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ERPSolGlobalViewLib.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="ADF Library"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="ERPSolTemplateView.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -366,18 +358,17 @@
             <value n="id" v="BC4J Oracle Domains"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="ERPSolGlobalViewLib.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ERPSolTemplateView.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
-            <hash>
-               <list n="classPath">
-                  <url path="../ERPSolIMSLIB/ERPSolGlobalViewLib.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="ERPSolGlobalViewLib.jar"/>
-               <value n="id" v="ERPSolGlobalViewLib.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
             <hash>
                <list n="classPath">
                   <url path="../ERPSolIMSLIB/ERPSolTemplateView.jar" jar-entry=""/>
@@ -389,7 +380,16 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../ERPSolIMSLIB/ERPSolTemplateView.jar" jar-entry=""/>
+                  <url path="../ERPSolIMSLib/ERPSolGlobalViewLib.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="ERPSolGlobalViewLib.jar"/>
+               <value n="id" v="ERPSolGlobalViewLib.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../ERPSolIMSLib/ERPSolTemplateView.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="ERPSolTemplateView.jar"/>
@@ -484,15 +484,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="ERPSolGlobalViewLib.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="ADF Library"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="ERPSolTemplateView.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -529,6 +521,14 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ERPSolGlobalViewLib.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ERPSolTemplateView.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

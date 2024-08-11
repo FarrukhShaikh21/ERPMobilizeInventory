@@ -234,7 +234,7 @@
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../ERPSolIMSLIB/ERPSolGlobalModelLib.jar" jar-entry=""/>
+                  <url path="../ERPSolIMSLib/ERPSolGlobalModelLib.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="ERPSolGlobalModelLib.jar"/>
