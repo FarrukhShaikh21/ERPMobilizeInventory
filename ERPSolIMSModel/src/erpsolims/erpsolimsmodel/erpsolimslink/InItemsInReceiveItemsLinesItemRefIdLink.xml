@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InItemsInReceiveItemsLinesItemRefIdLink"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  EntityAssociation="erpsolims.erpsolimsmodel.erpsolimsassoc.InItemsInReceiveItemsLinesItemRefIdAssoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="erpsolims.erpsolimsmodel.erpsolimslink.InItemsInReceiveItemsLinesItemRefIdLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="InItemsView"
+    Cardinality="1"
+    Source="true"
+    Owner="erpsolims.erpsolimsmodel.erpsolimsvo.InItemsView">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="InItemsView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="erpsolims.erpsolimsmodel.erpsolimsvo.InItemsView.ItemRefId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="InReceivedItemsLinesView"
+    Cardinality="-1"
+    Owner="erpsolims.erpsolimsmodel.erpsolimsvo.InReceivedItemsLinesView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="InReceivedItemsLinesView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="erpsolims.erpsolimsmodel.erpsolimsvo.InReceivedItemsLinesView.ItemRefId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="erpsolims.erpsolimsmodel.ERPSolIMSModelBundle"/>
+  </ResourceBundle>
+</ViewLink>
