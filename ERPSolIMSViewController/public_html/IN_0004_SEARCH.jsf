@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="IN_0004_SEARCH.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelHeader text="GRN Search" id="ph1">
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.InReceivedItemsFindVCQuery.queryDescriptor}"
+                              model="#{bindings.InReceivedItemsFindVCQuery.queryModel}"
+                              queryListener="#{bindings.InReceivedItemsFindVCQuery.processQuery}"
+                              queryOperationListener="#{bindings.InReceivedItemsFindVCQuery.processQueryOperation}"
+                              resultComponentId="::resId1" saveQueryMode="hidden" modeChangeVisible="false"/>
+                    <af:table value="#{bindings.InReceivedItemsCRUD.collectionModel}" var="row"
+                              rows="#{bindings.InReceivedItemsCRUD.rangeSize}"
+                              emptyText="#{bindings.InReceivedItemsCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.InReceivedItemsCRUD.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.InReceivedItemsCRUD.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.InReceivedItemsCRUD.rangeSize}" id="resId1">
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.Rnoteno.label}" id="resId1c1">
+                            <af:link text="#{row.Rnoteno}" id="l1" partialSubmit="true"
+                                     action="ACT-ERP-IN-0004-SEARCH-BACK"/>
+                            <af:outputText value="#{row.Rnoteno}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.Rnoteno.tooltip}" id="ot1"
+                                           rendered="false"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.Locationid.label}" id="resId1c2">
+                            <af:outputText value="#{row.Locationid}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.Locationid.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.Storeid.label}" id="resId1c3">
+                            <af:outputText value="#{row.Storeid}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.Storeid.tooltip}" id="ot3"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.txtStoreName.label}" id="resId1c4"
+                                   width="200" displayIndex="-1">
+                            <af:outputText value="#{row.txtStoreName}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.txtStoreName.tooltip}"
+                                           id="ot4"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.Recvdoctypeid.label}" id="resId1c5"
+                                   width="200" displayIndex="-1">
+                            <af:selectOneChoice value="#{row.bindings.Recvdoctypeid.inputValue}"
+                                                label="#{row.bindings.Recvdoctypeid.label}"
+                                                required="#{bindings.InReceivedItemsCRUD.hints.Recvdoctypeid.mandatory}"
+                                                shortDesc="#{bindings.InReceivedItemsCRUD.hints.Recvdoctypeid.tooltip}"
+                                                readOnly="true" id="soc1">
+                                <f:selectItems value="#{row.bindings.Recvdoctypeid.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.Recvdoctypeid.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.ReceivingDate.label}" id="resId1c6">
+                            <af:outputText value="#{row.ReceivingDate}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.ReceivingDate.tooltip}"
+                                           id="ot5">
+                                <af:convertDateTime pattern="#{bindings.InReceivedItemsCRUD.hints.ReceivingDate.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.SourceDocRef.label}" id="resId1c7">
+                            <af:outputText value="#{row.SourceDocRef}"
+                                           shortDesc="#{bindings.InReceivedItemsCRUD.hints.SourceDocRef.tooltip}"
+                                           id="ot6"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InReceivedItemsCRUD.hints.Posted.label}" id="resId1c8">
+                            <af:selectOneChoice value="#{row.bindings.Posted.inputValue}"
+                                                label="#{row.bindings.Posted.label}"
+                                                required="#{bindings.InReceivedItemsCRUD.hints.Posted.mandatory}"
+                                                shortDesc="#{bindings.InReceivedItemsCRUD.hints.Posted.tooltip}"
+                                                readOnly="true" id="soc2">
+                                <f:selectItems value="#{row.bindings.Posted.items}" id="si2"/>
+                                <f:validator binding="#{row.bindings.Posted.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                    </af:table>
+                </af:panelGroupLayout>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t1">
+                        <af:button text="Back To GRN" id="b1" action="ACT-ERP-IN-0004-SEARCH-BACK"
+                                   icon="#{resource['images:imgExitForm.png']}"/>
+                    </af:toolbar>
+                </f:facet>
+            </af:panelHeader>
+        </af:form>
+    </af:document>
+</f:view>

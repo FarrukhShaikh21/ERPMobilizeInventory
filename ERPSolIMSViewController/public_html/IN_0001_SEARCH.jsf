@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="IN_0001_SEARCH.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelHeader text="Item" id="ph1">
+                <f:facet name="context"/>
+                <f:facet name="menuBar"/>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <af:button text="Back To Item" id="b1" icon="#{resource['images:imgExitForm.png']}"
+                                   action="ERP-ACT-IN-0001-SEARCH-BACK"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="legend"/>
+                <f:facet name="info"/>
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.InItemsViewFindVCQuery.queryDescriptor}"
+                              model="#{bindings.InItemsViewFindVCQuery.queryModel}"
+                              queryListener="#{bindings.InItemsViewFindVCQuery.processQuery}"
+                              queryOperationListener="#{bindings.InItemsViewFindVCQuery.processQueryOperation}"
+                              saveQueryMode="hidden" modeChangeVisible="false" rows="3" maxColumns="2"
+                              resultComponentId="::t1"/>
+                    <af:table value="#{bindings.InItemsViewCRUD.collectionModel}" var="row"
+                              rows="#{bindings.InItemsViewCRUD.rangeSize}"
+                              emptyText="#{bindings.InItemsViewCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.InItemsViewCRUD.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.InItemsViewCRUD.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.InItemsViewCRUD.rangeSize}" id="t1"
+                              columnStretching="last" autoHeightRows="15" styleClass="AFStretchWidth">
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.Itemid.label}" id="c1" width="200">
+                            <af:link text="#{row.bindings.Itemid.inputValue}" id="l1" partialSubmit="true"
+                                     action="ERP-ACT-IN-0001-SEARCH-BACK"/>
+                            <af:inputText value="#{row.bindings.Itemid.inputValue}"
+                                          label="#{bindings.InItemsViewCRUD.hints.Itemid.label}"
+                                          required="#{bindings.InItemsViewCRUD.hints.Itemid.mandatory}"
+                                          columns="#{bindings.InItemsViewCRUD.hints.Itemid.displayWidth}"
+                                          maximumLength="#{bindings.InItemsViewCRUD.hints.Itemid.precision}"
+                                          shortDesc="#{bindings.InItemsViewCRUD.hints.Itemid.tooltip}" id="it1"
+                                          readOnly="true" rendered="false">
+                                <f:validator binding="#{row.bindings.Itemid.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.ItemRefId.label}" id="c2" width="200">
+                            <af:inputText value="#{row.bindings.ItemRefId.inputValue}"
+                                          label="#{bindings.InItemsViewCRUD.hints.ItemRefId.label}"
+                                          required="#{bindings.InItemsViewCRUD.hints.ItemRefId.mandatory}"
+                                          columns="#{bindings.InItemsViewCRUD.hints.ItemRefId.displayWidth}"
+                                          maximumLength="#{bindings.InItemsViewCRUD.hints.ItemRefId.precision}"
+                                          shortDesc="#{bindings.InItemsViewCRUD.hints.ItemRefId.tooltip}" id="it2"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.ItemRefId.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.Sigroupid.label}" id="c3">
+                            <af:selectOneChoice value="#{row.bindings.Sigroupid.inputValue}"
+                                                label="#{row.bindings.Sigroupid.label}"
+                                                required="#{bindings.InItemsViewCRUD.hints.Sigroupid.mandatory}"
+                                                shortDesc="#{bindings.InItemsViewCRUD.hints.Sigroupid.tooltip}"
+                                                id="soc1" readOnly="true">
+                                <f:selectItems value="#{row.bindings.Sigroupid.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.Sigroupid.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.Siclassid.label}" id="c4">
+                            <af:selectOneChoice value="#{row.bindings.Siclassid.inputValue}"
+                                                label="#{row.bindings.Siclassid.label}"
+                                                required="#{bindings.InItemsViewCRUD.hints.Siclassid.mandatory}"
+                                                shortDesc="#{bindings.InItemsViewCRUD.hints.Siclassid.tooltip}"
+                                                id="soc2" readOnly="true">
+                                <f:selectItems value="#{row.bindings.Siclassid.items}" id="si2"/>
+                                <f:validator binding="#{row.bindings.Siclassid.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.Description.label}" id="c5" width="200">
+                            <af:inputText value="#{row.bindings.Description.inputValue}"
+                                          label="#{bindings.InItemsViewCRUD.hints.Description.label}"
+                                          required="#{bindings.InItemsViewCRUD.hints.Description.mandatory}"
+                                          columns="#{bindings.InItemsViewCRUD.hints.Description.displayWidth}"
+                                          maximumLength="#{bindings.InItemsViewCRUD.hints.Description.precision}"
+                                          shortDesc="#{bindings.InItemsViewCRUD.hints.Description.tooltip}" id="it3"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.Description.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.ModelNo.label}" id="c6" width="200">
+                            <af:inputText value="#{row.bindings.ModelNo.inputValue}"
+                                          label="#{bindings.InItemsViewCRUD.hints.ModelNo.label}"
+                                          required="#{bindings.InItemsViewCRUD.hints.ModelNo.mandatory}"
+                                          columns="#{bindings.InItemsViewCRUD.hints.ModelNo.displayWidth}"
+                                          maximumLength="#{bindings.InItemsViewCRUD.hints.ModelNo.precision}"
+                                          shortDesc="#{bindings.InItemsViewCRUD.hints.ModelNo.tooltip}" id="it4"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.ModelNo.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemsViewCRUD.hints.OldItemid.label}" id="c7">
+                            <af:inputText value="#{row.bindings.OldItemid.inputValue}"
+                                          label="#{bindings.InItemsViewCRUD.hints.OldItemid.label}"
+                                          required="#{bindings.InItemsViewCRUD.hints.OldItemid.mandatory}"
+                                          columns="#{bindings.InItemsViewCRUD.hints.OldItemid.displayWidth}"
+                                          maximumLength="#{bindings.InItemsViewCRUD.hints.OldItemid.precision}"
+                                          shortDesc="#{bindings.InItemsViewCRUD.hints.OldItemid.tooltip}" id="it5"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.OldItemid.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                </af:panelGroupLayout>
+            </af:panelHeader>
+        </af:form>
+    </af:document>
+</f:view>

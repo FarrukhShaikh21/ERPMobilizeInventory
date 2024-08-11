@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+
+af|outputLabel{
+    font-weight: bold;
+    color: Black;
+    /*font-weight: bold;*/
+    /*font-size: medium;*/
+    font-family: Verdana;
+}
+
+
+af|inputText::label{
+    /*font-weight: bold;*/
+    color: Black;
+    /*font-weight: bold;*/
+    /*font-size: medium;*/
+    font-family: Verdana;
+}
+
+af|inputDate::label{
+    font-weight: bold;
+    color: Black;
+    font-weight: bold;
+}
+
+
+af|inputComboboxListOfValues::label{
+    font-family: Verdana;
+    font-weight: bold;
+    color: Black;
+}
+af|inputListOfValues::label{
+    font-family: Verdana;
+    font-weight: bold;
+    color: Black;
+}
+
+af|panelLabelAndMessage::label{
+    font-family: Verdana;
+    font-weight: bold;
+    color: Black;
+}
+
+af|selectOneChoice::label{
+    font-family: Verdana;
+    font-weight: bold;
+    color: Black;
+}
+
+af|inputText::content{
+    height:25px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+
+af|selectOneChoice::content{
+    height:25px;
+    font-weight: bold;
+    font-family: Verdana;
+}
+
+
+af|inputDate::content{
+    height:25px;
+    font-weight: bold;
+}
+
+
+af|inputComboboxListOfValues::content{
+    height:25px;
+    font-weight: bold;
+}
+
+.ERPSolFormEntryAreaHeader{
+    background-color:#84bbe6
+}
+.ERPSolFormEntryAreaFont{
+font-size:large;color:white;font-family:verdana
+}

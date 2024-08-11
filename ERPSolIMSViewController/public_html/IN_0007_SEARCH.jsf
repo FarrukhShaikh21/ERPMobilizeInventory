@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="IN_0007_SEARCH.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout layout="vertical" id="pgl1">
+                <af:panelHeader text="InDocumentShipmentHeader" id="ph2">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.InDocumentShipmentHeaderFindVCQuery.queryDescriptor}"
+                              model="#{bindings.InDocumentShipmentHeaderFindVCQuery.queryModel}"
+                              queryListener="#{bindings.InDocumentShipmentHeaderFindVCQuery.processQuery}"
+                              queryOperationListener="#{bindings.InDocumentShipmentHeaderFindVCQuery.processQueryOperation}"
+                              saveQueryMode="hidden" modeChangeVisible="false"/>
+                    <af:table value="#{bindings.InDocumentShipmentHeaderCRUD.collectionModel}" var="row"
+                              rows="#{bindings.InDocumentShipmentHeaderCRUD.rangeSize}"
+                              emptyText="#{bindings.InDocumentShipmentHeaderCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.InDocumentShipmentHeaderCRUD.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.InDocumentShipmentHeaderCRUD.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.InDocumentShipmentHeaderCRUD.rangeSize}"
+                              id="t2">
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.label}"
+                                   id="c1">
+                            <af:link text="#{row.bindings.ShipmentHeaderId.inputValue}" id="l1" partialSubmit="true"
+                                     action="ACT-BACK-TO-IN_0007"/>
+                            <af:inputText value="#{row.bindings.ShipmentHeaderId.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentHeaderId.tooltip}"
+                                          id="it1" readOnly="true" rendered="false">
+                                <f:validator binding="#{row.bindings.ShipmentHeaderId.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.label}"
+                                   id="c2">
+                            <af:inputDate value="#{row.bindings.ShipmentDate.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.displayWidth}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.tooltip}"
+                                          id="id1" readOnly="true">
+                                <f:validator binding="#{row.bindings.ShipmentDate.validator}"/>
+                                <af:convertDateTime pattern="#{bindings.InDocumentShipmentHeaderCRUD.hints.ShipmentDate.format}"/>
+                            </af:inputDate>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.Locationid.label}" id="c3">
+                            <af:selectOneChoice value="#{row.bindings.Locationid.inputValue}"
+                                                label="#{row.bindings.Locationid.label}"
+                                                required="#{bindings.InDocumentShipmentHeaderCRUD.hints.Locationid.mandatory}"
+                                                shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.Locationid.tooltip}"
+                                                id="soc1" readOnly="true">
+                                <f:selectItems value="#{row.bindings.Locationid.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.Locationid.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.label}" id="c4">
+                            <af:inputText value="#{row.bindings.Storeid.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.Storeid.tooltip}"
+                                          id="it2" readOnly="true">
+                                <f:validator binding="#{row.bindings.Storeid.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.txtStoreName.label}"
+                                   id="c5">
+                            <af:inputComboboxListOfValues id="txtStoreNameId"
+                                                          popupTitle="Search and Select: #{bindings.InDocumentShipmentHeaderCRUD.hints.txtStoreName.label}"
+                                                          value="#{row.bindings.txtStoreName.inputValue}"
+                                                          model="#{row.bindings.txtStoreName.listOfValuesModel}"
+                                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.txtStoreName.mandatory}"
+                                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.txtStoreName.displayWidth}"
+                                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.txtStoreName.tooltip}"
+                                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.txtStoreName.validator}"/>
+                            </af:inputComboboxListOfValues>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.label}"
+                                   id="c6">
+                            <af:inputText value="#{row.bindings.DepartureFrom.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.DepartureFrom.tooltip}"
+                                          id="it3" readOnly="true">
+                                <f:validator binding="#{row.bindings.DepartureFrom.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.label}" id="c7">
+                            <af:inputText value="#{row.bindings.VehicleNo.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.VehicleNo.tooltip}"
+                                          id="it4" readOnly="true">
+                                <f:validator binding="#{row.bindings.VehicleNo.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.label}" id="c8">
+                            <af:inputText value="#{row.bindings.DriverName.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverName.tooltip}"
+                                          id="it5" readOnly="true">
+                                <f:validator binding="#{row.bindings.DriverName.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.label}"
+                                   id="c9">
+                            <af:inputText value="#{row.bindings.DriverContactNo.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.DriverContactNo.tooltip}"
+                                          id="it6" readOnly="true">
+                                <f:validator binding="#{row.bindings.DriverContactNo.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.label}" id="c10">
+                            <af:inputText value="#{row.bindings.Posted.inputValue}"
+                                          label="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.label}"
+                                          required="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.mandatory}"
+                                          columns="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.displayWidth}"
+                                          maximumLength="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.precision}"
+                                          shortDesc="#{bindings.InDocumentShipmentHeaderCRUD.hints.Posted.tooltip}"
+                                          id="it7" readOnly="true">
+                                <f:validator binding="#{row.bindings.Posted.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                    <f:facet name="toolbar">
+                        <af:toolbar id="t1">
+                            <af:link text="Back To Document Shipment" id="l2"
+                                     icon="#{resource['images:imgExitForm.png']}" partialSubmit="true"
+                                     action="ACT-BACK-TO-IN_0007"/>
+                        </af:toolbar>
+                    </f:facet>
+                </af:panelHeader>
+            </af:panelGroupLayout>
+        </af:form>
+    </af:document>
+</f:view>

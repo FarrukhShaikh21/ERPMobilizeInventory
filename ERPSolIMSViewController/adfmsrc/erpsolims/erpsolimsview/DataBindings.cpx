@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.47" id="DataBindings"
+             SeparateXMLFiles="false" Package="erpsolims.erpsolimsview" ClientType="Generic">
+  <pageMap>
+    <page path="/IN_0004.jsf" usageId="erpsolims_erpsolimsview_IN_0004PageDef"/>
+    <page path="/ERPSolIMSMain.jsf" usageId="erpsolims_erpsolimsview_ERPSolIMSMainPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExecuteWithParamsTransactionIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExecuteWithParamsSetupIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef1"/>
+    <page path="/IN_0004_SEARCH.jsf" usageId="erpsolims_erpsolimsview_IN_0004_SEARCHPageDef"/>
+    <page path="/IN_1119.jsf" usageId="erpsolims_erpsolimsview_IN_1119PageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExecuteWithParamsReportIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@BeforeActivityRollbackIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_RollbackPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@doSetInventoryReportDefaults"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaultsPageDef"/>
+    <page path="/IN_0002.jsf" usageId="erpsolims_erpsolimsview_IN_0002PageDef"/>
+    <page path="/IN_0002_SEARCH.jsf" usageId="erpsolims_erpsolimsview_IN_0002_SEARCHPageDef"/>
+    <page path="/IN_0002_IMEI.jsf" usageId="erpsolims_erpsolimsview_IN_0002_IMEIPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExeWithIN_0002_IMEIStnlineseq"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef1"/>
+    <page path="/IN_0004_IMEI.jsf" usageId="erpsolims_erpsolimsview_IN_0004_IMEIPageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExecuteWithParamsReportDetIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef11"/>
+    <page path="/IN_0001.jsf" usageId="erpsolims_erpsolimsview_IN_0001PageDef"/>
+    <page path="/IN_0001_SEARCH.jsf" usageId="erpsolims_erpsolimsview_IN_0001_SEARCHPageDef"/>
+    <page path="/IN_0109.jsf" usageId="erpsolims_erpsolimsview_IN_0109PageDef"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@ExecuteWithParamsReverseIMS"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef111"/>
+    <page path="/WEB-INF/ERPSOLIMSBTF.xml#ERPSOLIMSBTF@doSetInvReportDefForUnsubmit"
+          usageId="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaults1PageDef"/>
+    <page path="/IN_0007.jsf" usageId="erpsolims_erpsolimsview_IN_0007PageDef"/>
+    <page path="/IN_0007_SEARCH.jsf" usageId="erpsolims_erpsolimsview_IN_0007_SEARCHPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="erpsolims_erpsolimsview_IN_0004PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0004PageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSolIMSMainPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSolIMSMainPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef1"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMS_ERPSOLIMS_ExecuteWithParamsPageDef1"/>
+    <page id="erpsolims_erpsolimsview_IN_0004_SEARCHPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.IN_0004_SEARCHPageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_1119PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_1119PageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_RollbackPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_RollbackPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaultsPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaultsPageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0002PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0002PageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0002_SEARCHPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.IN_0002_SEARCHPageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0002_IMEIPageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0002_IMEIPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef1"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef1"/>
+    <page id="erpsolims_erpsolimsview_IN_0004_IMEIPageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0004_IMEIPageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef11"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef11"/>
+    <page id="erpsolims_erpsolimsview_IN_0001PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0001PageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0001_SEARCHPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.IN_0001_SEARCHPageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0109PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0109PageDef"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef111"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_ExecuteWithParamsPageDef111"/>
+    <page id="erpsolims_erpsolimsview_ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaults1PageDef"
+          path="erpsolims.erpsolimsview.pageDefs.ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaults1PageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0007PageDef" path="erpsolims.erpsolimsview.pageDefs.IN_0007PageDef"/>
+    <page id="erpsolims_erpsolimsview_IN_0007_SEARCHPageDef"
+          path="erpsolims.erpsolimsview.pageDefs.IN_0007_SEARCHPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="ERPSolTempAppModuleDataControl" Package="erpsoltemp.erpsoltempmodel.erpsoltempam"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ERPSolTempAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="ERPSolIMSAppModuleDataControl" Package="erpsolims.erpsolimsmodel.erpsolimsam"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ERPSolIMSAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

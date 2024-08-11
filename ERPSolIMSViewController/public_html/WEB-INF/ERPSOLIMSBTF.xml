@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ERPSOLIMSBTF">
+    <default-activity>doERPSolIMSSessionGlobals</default-activity>
+    <input-parameter-definition id="__21">
+      <name>P_ADF_USERCODE</name>
+      <value>#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolStrUserCode}</value>
+      <class>erpsolims.erpsolimsview.erpsolimsclass.ERPSolIMSBean</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__22">
+      <name>P_ADF_USER_LOCATIONCODE</name>
+      <value>#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolStrUserLocationCode}</value>
+      <class>erpsolims.erpsolimsview.erpsolimsclass.ERPSolIMSBean</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__23">
+      <name>P_ADF_USER_STORECODE</name>
+      <value>#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolStrUserStoreCode}</value>
+      <class>erpsolims.erpsolimsview.erpsolimsclass.ERPSolIMSBean</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__24">
+      <name>P_ADF_USER_REGIONCODE</name>
+      <value>#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolStrUserRegionCode}</value>
+      <class>erpsolims.erpsolimsview.erpsolimsclass.ERPSolIMSBean</class>
+    </input-parameter-definition>
+    <managed-bean id="__15">
+      <managed-bean-name>ERPSolTempBean</managed-bean-name>
+      <managed-bean-class>erpsoltemp.erpsoltempview.erptempclass.ERPSolutionTemplateBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__18">
+      <managed-bean-name>ERPSolIMSPageFlowBean</managed-bean-name>
+      <managed-bean-class>erpsolims.erpsolimsview.erpsolimsclass.ERPSolIMSBean</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <exception-handler>ERPSolIMSException</exception-handler>
+    <view id="ERPSolIMSMain">
+      <page>/ERPSolIMSMain.jsf</page>
+    </view>
+    <method-call id="ExecuteWithParamsTransactionIMS">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doERPSolIMSSessionGlobals">
+      <method>#{pageFlowScope.ERPSolIMSPageFlowBean.doSetERPSolIMSSessionGlobals}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParamsSetupIMS">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doERPGotoIMSActivity">
+      <method>#{pageFlowScope.ERPSolTempBean.doGotoERPSolActivity}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <view id="IN_0004">
+      <page>/IN_0004.jsf</page>
+    </view>
+    <task-flow-return id="ERPSOL-RETURN-FROM-IMS">
+      <outcome>
+        <name>ERPSOL-RETURN-FROM-IMS</name>
+      </outcome>
+    </task-flow-return>
+    <view id="IN_0004_SEARCH">
+      <page>/IN_0004_SEARCH.jsf</page>
+    </view>
+    <view id="IN_1119">
+      <page>/IN_1119.jsf</page>
+    </view>
+    <method-call id="ExecuteWithParamsReportIMS">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="BeforeActivityRollbackIMS">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>BeforeActivityRollbackIMS</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doSetInventoryReportDefaults">
+      <method>#{bindings.doSetInventoryReportDefaults.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-ACT-IN-1119</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="IN_0002">
+      <page>/IN_0002.jsf</page>
+    </view>
+    <view id="IN_0002_SEARCH">
+      <page>/IN_0002_SEARCH.jsf</page>
+    </view>
+    <view id="IN_0002_IMEI">
+      <page>/IN_0002_IMEI.jsf</page>
+    </view>
+    <method-call id="ExeWithIN_0002_IMEIStnlineseq">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ACT-ERP-IN-0002-IMEI</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="IN_0004_IMEI">
+      <page>/IN_0004_IMEI.jsf</page>
+    </view>
+    <view id="ERPSolIMSException">
+      <page>/ERPSolIMSException.jsf</page>
+    </view>
+    <task-flow-return id="ACT-ERP-SOL-LOGOUT">
+      <outcome>
+        <name>ACT-ERP-SOL-LOGOUT</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="ExecuteWithParamsReportDetIMS">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="IN_0001">
+      <page>/IN_0001.jsf</page>
+    </view>
+    <view id="IN_0001_SEARCH">
+      <page>/IN_0001_SEARCH.jsf</page>
+    </view>
+    <method-call id="ExecuteWithParamsReverseIMS">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-SOL-ACT-GOTO-MAIN</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="IN_0109">
+      <page>/IN_0109.jsf</page>
+    </view>
+    <method-call id="doSetInvReportDefForUnsubmit">
+      <method>#{bindings.doSetInventoryReportDefaults.execute}</method>
+      <outcome>
+        <fixed-outcome>ERP-ACT-IN-0109</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="IN_0007">
+      <page>/IN_0007.jsf</page>
+    </view>
+    <view id="IN_0007_SEARCH">
+      <page>/IN_0007_SEARCH.jsf</page>
+    </view>
+    <control-flow-rule id="__16">
+      <from-activity-id>ExecuteWithParamsTransactionIMS</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ExecuteWithParamsReportIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>doERPSolIMSSessionGlobals</from-activity-id>
+      <control-flow-case id="__25">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ExecuteWithParamsSetupIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id>ExecuteWithParamsSetupIMS</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ExecuteWithParamsTransactionIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id>doERPGotoIMSActivity</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome>ERP-ACT-IN-0004</from-outcome>
+        <to-activity-id>IN_0004</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__5">
+        <from-outcome>ERP-ACT-IN-1119</from-outcome>
+        <to-activity-id>doSetInventoryReportDefaults</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__14">
+        <from-outcome>ERP-ACT-IN-0002</from-outcome>
+        <to-activity-id>IN_0002</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__48">
+        <from-outcome>ERP-ACT-IN-0001</from-outcome>
+        <to-activity-id>IN_0001</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__55">
+        <from-outcome>ERP-ACT-IN-0109</from-outcome>
+        <to-activity-id>doSetInvReportDefForUnsubmit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__59">
+        <from-outcome>ERP-ACT-IN-0007</from-outcome>
+        <to-activity-id>IN_0007</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__33">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome>ERPSOL-RETURN-FROM-IMS</from-outcome>
+        <to-activity-id>ERPSOL-RETURN-FROM-IMS</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__43">
+        <from-outcome>ERP-ACT-EXIT-FORM-IMS</from-outcome>
+        <to-activity-id>ERPSolIMSMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__1">
+      <from-activity-id>IN_0004</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>ACT-ERP-IN-0004-SEARCH</from-outcome>
+        <to-activity-id>IN_0004_SEARCH</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome>ACT-ERP-IN-0004-IMEI</from-outcome>
+        <to-activity-id>IN_0004_IMEI</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>IN_0004_SEARCH</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>ACT-ERP-IN-0004-SEARCH-BACK</from-outcome>
+        <to-activity-id>IN_0004</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>ExecuteWithParamsReportIMS</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ExecuteWithParamsReportDetIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__8">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome>ACTStartERPSolutionTaskFlow</from-outcome>
+        <to-activity-id>BeforeActivityRollbackIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id>BeforeActivityRollbackIMS</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>BeforeActivityRollbackIMS</from-outcome>
+        <to-activity-id>doERPGotoIMSActivity</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>doSetInventoryReportDefaults</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>ERP-ACT-IN-1119</from-outcome>
+        <to-activity-id>IN_1119</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id>IN_0002</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>ERP-ACT-IN-0002-SEARCH</from-outcome>
+        <to-activity-id>IN_0002_SEARCH</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome>ACT-ERP-IN-0002-IMEI</from-outcome>
+        <to-activity-id>ExeWithIN_0002_IMEIStnlineseq</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__29">
+      <from-activity-id>IN_0002_SEARCH</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome>ACT-ERP-IN-0002-SEARCH-BACK</from-outcome>
+        <to-activity-id>IN_0002</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id>IN_0002_IMEI</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome>ACT-ERP-IN-0002-IMEI-BACK</from-outcome>
+        <to-activity-id>IN_0002</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__38">
+      <from-activity-id>ExeWithIN_0002_IMEIStnlineseq</from-activity-id>
+      <control-flow-case id="__39">
+        <from-outcome>ACT-ERP-IN-0002-IMEI</from-outcome>
+        <to-activity-id>IN_0002_IMEI</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id>IN_0004_IMEI</from-activity-id>
+      <control-flow-case id="__42">
+        <from-outcome>ACT-ERP-IN-0004-IMEI-BACK</from-outcome>
+        <to-activity-id>IN_0004</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__44">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__45">
+        <from-outcome>ACT-ERP-SOL-LOGOUT</from-outcome>
+        <to-activity-id>ACT-ERP-SOL-LOGOUT</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__46">
+      <from-activity-id>ExecuteWithParamsReportDetIMS</from-activity-id>
+      <control-flow-case id="__47">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ExecuteWithParamsReverseIMS</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__49">
+      <from-activity-id>IN_0001</from-activity-id>
+      <control-flow-case id="__50">
+        <from-outcome>ERP-ACT-IN-0001-SEARCH</from-outcome>
+        <to-activity-id>IN_0001_SEARCH</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id>IN_0001_SEARCH</from-activity-id>
+      <control-flow-case id="__52">
+        <from-outcome>ERP-ACT-IN-0001-SEARCH-BACK</from-outcome>
+        <to-activity-id>IN_0001</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__53">
+      <from-activity-id>ExecuteWithParamsReverseIMS</from-activity-id>
+      <control-flow-case id="__54">
+        <from-outcome>ERP-SOL-ACT-GOTO-MAIN</from-outcome>
+        <to-activity-id>ERPSolIMSMain</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__56">
+      <from-activity-id>doSetInvReportDefForUnsubmit</from-activity-id>
+      <control-flow-case id="__57">
+        <from-outcome>ERP-ACT-IN-0109</from-outcome>
+        <to-activity-id>IN_0109</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__58">
+      <from-activity-id>IN_0007</from-activity-id>
+      <control-flow-case id="__60">
+        <from-outcome>ACT-GOTO-IN_0007_SEARCH</from-outcome>
+        <to-activity-id>IN_0007_SEARCH</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__61">
+      <from-activity-id>IN_0007_SEARCH</from-activity-id>
+      <control-flow-case id="__62">
+        <from-outcome>ACT-BACK-TO-IN_0007</from-outcome>
+        <to-activity-id>IN_0007</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <visibility>
+      <url-invoke-allowed/>
+    </visibility>
+  </task-flow-definition>
+</adfc-config>

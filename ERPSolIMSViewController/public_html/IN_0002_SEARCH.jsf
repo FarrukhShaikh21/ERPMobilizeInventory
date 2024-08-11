@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="IN_0002_SEARCH.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelHeader text="InItemTransferNote" id="ph1">
+                <af:panelGroupLayout layout="vertical" id="pgl1">
+                    <af:query id="qryId1" headerText="Search" disclosed="true"
+                              value="#{bindings.InItemTransferNoteViewFindVCQuery.queryDescriptor}"
+                              model="#{bindings.InItemTransferNoteViewFindVCQuery.queryModel}"
+                              queryListener="#{bindings.InItemTransferNoteViewFindVCQuery.processQuery}"
+                              queryOperationListener="#{bindings.InItemTransferNoteViewFindVCQuery.processQueryOperation}"
+                              resultComponentId="::resId1" saveQueryMode="hidden" modeChangeVisible="false"
+                              maxColumns="2" rows="4"/>
+                    <af:table value="#{bindings.InItemTransferNoteCRUD.collectionModel}" var="row"
+                              rows="#{bindings.InItemTransferNoteCRUD.rangeSize}"
+                              emptyText="#{bindings.InItemTransferNoteCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.InItemTransferNoteCRUD.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.InItemTransferNoteCRUD.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.InItemTransferNoteCRUD.rangeSize}"
+                              id="resId1">
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.Stnno.label}" id="resId1c1">
+                            <af:link text="#{row.Stnno}" id="l1" action="ACT-ERP-IN-0002-SEARCH-BACK"
+                                     partialSubmit="true"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.DateOfTransfer.label}"
+                                   id="resId1c2">
+                            <af:outputText value="#{row.DateOfTransfer}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.DateOfTransfer.tooltip}"
+                                           id="ot2">
+                                <af:convertDateTime pattern="#{bindings.InItemTransferNoteCRUD.hints.DateOfTransfer.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.Locationid.label}" id="resId1c3">
+                            <af:outputText value="#{row.Locationid}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.Locationid.tooltip}"
+                                           id="ot3"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.txtLocationName.label}"
+                                   id="resId1c4" width="200">
+                            <af:outputText value="#{row.txtLocationName}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.txtLocationName.tooltip}"
+                                           id="ot4"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.Sendingstoreid.label}"
+                                   id="resId1c5">
+                            <af:outputText value="#{row.Sendingstoreid}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.Sendingstoreid.tooltip}"
+                                           id="ot5"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.txtStoreName.label}"
+                                   id="resId1c6" width="200" minimumWidth="12">
+                            <af:outputText value="#{row.txtStoreName}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.txtStoreName.tooltip}"
+                                           id="ot6"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.Receivingstoreid.label}"
+                                   id="resId1c7">
+                            <af:outputText value="#{row.Receivingstoreid}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.Receivingstoreid.tooltip}"
+                                           id="ot7"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.txtReceivingSroreName.label}"
+                                   id="resId1c8" width="200">
+                            <af:outputText value="#{row.txtReceivingSroreName}"
+                                           shortDesc="#{bindings.InItemTransferNoteCRUD.hints.txtReceivingSroreName.tooltip}"
+                                           id="ot8"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.InItemTransferNoteCRUD.hints.Posted.label}" id="resId1c9">
+                            <af:selectOneChoice value="#{row.bindings.Posted.inputValue}"
+                                                label="#{row.bindings.Posted.label}"
+                                                required="#{bindings.InItemTransferNoteCRUD.hints.Posted.mandatory}"
+                                                shortDesc="#{bindings.InItemTransferNoteCRUD.hints.Posted.tooltip}"
+                                                readOnly="true" id="soc1">
+                                <f:selectItems value="#{row.bindings.Posted.items}" id="si1"/>
+                                <f:validator binding="#{row.bindings.Posted.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                    </af:table>
+                </af:panelGroupLayout>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t1">
+                        <af:link text="Back To Transfer Note" id="l2" icon="#{resource['images:imgExitForm.png']}"
+                                 partialSubmit="true" action="ACT-ERP-IN-0002-SEARCH-BACK"/>
+                    </af:toolbar>
+                </f:facet>
+            </af:panelHeader>
+        </af:form>
+    </af:document>
+</f:view>

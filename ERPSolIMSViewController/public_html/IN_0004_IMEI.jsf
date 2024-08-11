@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="IN_0004_IMEI.jsf" id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:panelHeader text="GRN IMEI" id="ph1">
+        <f:facet name="context"/>
+        <f:facet name="menuBar"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:button text="Back To GRN" id="b1" icon="#{resource['images:imgExitForm.png']}"
+                       action="ACT-ERP-IN-0004-IMEI-BACK"/>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+        <af:panelGridLayout id="pgl1">
+          <af:gridRow marginTop="5px" height="auto" id="gr1">
+            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc1" halign="stretch">
+              <af:inputText value="#{bindings.Posted.inputValue}" label="#{bindings.Posted.hints.label}"
+                            required="#{bindings.Posted.hints.mandatory}"
+                            columns="#{bindings.Posted.hints.displayWidth}"
+                            maximumLength="#{bindings.Posted.hints.precision}"
+                            shortDesc="#{bindings.Posted.hints.tooltip}" id="it1" rendered="false">
+                <f:validator binding="#{bindings.Posted.validator}"/>
+              </af:inputText>
+              <af:panelFormLayout id="pfl1" maxColumns="2" rows="1">
+                                <f:facet name="footer"/>
+                                <af:inputText value="#{bindings.Posted.inputValue}"
+                                              label="#{bindings.Posted.hints.label}"
+                                              required="#{bindings.Posted.hints.mandatory}"
+                                              columns="#{bindings.Posted.hints.displayWidth}"
+                                              maximumLength="#{bindings.Posted.hints.precision}"
+                                              shortDesc="#{bindings.Posted.hints.tooltip}" id="it3" rendered="false">
+                                    <f:validator binding="#{bindings.Posted.validator}"/>
+                                </af:inputText>
+                                <af:inputText label="Scan Box No" id="it2" placeholder="Scan Box No"
+                                              partialTriggers="it2" autoSubmit="true"
+                                              value="#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolImeiString}"
+                                              valueChangeListener="#{pageFlowScope.ERPSolIMSPageFlowBean.erpSolGRNBOX}"
+                                              disabled="#{bindings.Posted.inputValue=='Y'}"/>
+                                <af:inputText label="Scan IMEI Here" id="it11" placeholder="Scan IMEI Here"
+                                              autoSubmit="true" partialTriggers="it1"
+                                              value="#{pageFlowScope.ERPSolIMSPageFlowBean.ERPSolImeiString}"
+                                              valueChangeListener="#{pageFlowScope.ERPSolIMSPageFlowBean.erpSolGRNIMEI}"
+                                              disabled="#{bindings.Posted.inputValue=='Y'}"/>
+                    </af:panelFormLayout>
+            </af:gridCell>
+          </af:gridRow>
+          <af:gridRow marginTop="5px" height="auto" marginBottom="5px" id="gr2">
+            <af:gridCell marginStart="5px" width="100%" marginEnd="5px" id="gc2">
+              <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="detach" partialTriggers="::pc1">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar">
+                  <af:toolbar id="t3">
+                    <af:button actionListener="#{bindings.doERPSolRemoveGRNBox.execute}" text="Delete Selected Box"
+                               disabled="#{!bindings.doERPSolRemoveGRNBox.enabled}" id="b3"
+                               icon="#{resource['images:imgDelete.png']}"/>
+                    <af:button text="Export To Excel" id="b6">
+                      <af:exportCollectionActionListener type="excelHTML" exportedId="t1" filename="GRNImei.xls"
+                                                         title="GRN IMEI"/>
+                    </af:button>
+                    <af:button actionListener="#{bindings.Delete.execute}" text="Delete Selected IMEI"
+                               disabled="#{!bindings.Delete.enabled}" id="b2"
+                               icon="#{resource['images:imgDelete.png']}"/>
+                    <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b4"
+                               icon="#{resource['images:imgSave.png']}"/>
+                    <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b5"
+                               icon="#{resource['images:imgUndo.png']}">
+                      <af:resetActionListener/>
+                    </af:button>
+                  </af:toolbar>
+                </f:facet>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.InReceivedItemsSnoDetCRUD.collectionModel}" var="row"
+                          rows="#{bindings.InReceivedItemsSnoDetCRUD.rangeSize}"
+                          emptyText="#{bindings.InReceivedItemsSnoDetCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.InReceivedItemsSnoDetCRUD.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.InReceivedItemsSnoDetCRUD.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.InReceivedItemsSnoDetCRUD.rangeSize}" id="t1"
+                          scrollPolicy="page" autoHeightRows="20" styleClass="AFStretchWidth" partialTriggers="::b2">
+                  <af:column headerText="#{bindings.InReceivedItemsSnoDetCRUD.hints.ItemRefId.label}" id="c1">
+                    <af:outputText value="#{row.ItemRefId}"
+                                   shortDesc="#{bindings.InReceivedItemsSnoDetCRUD.hints.ItemRefId.tooltip}" id="ot1"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.InReceivedItemsSnoDetCRUD.hints.TempBoxNo.label}" id="c2"
+                             width="200">
+                    <af:outputText value="#{row.TempBoxNo}"
+                                   shortDesc="#{bindings.InReceivedItemsSnoDetCRUD.hints.TempBoxNo.tooltip}" id="ot2"/>
+                  </af:column>
+                  <af:column headerText="#{bindings.InReceivedItemsSnoDetCRUD.hints.SerialNo.label}" id="c3"
+                             width="200">
+                    <af:outputText value="#{row.SerialNo}"
+                                   shortDesc="#{bindings.InReceivedItemsSnoDetCRUD.hints.SerialNo.tooltip}" id="ot3"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+            </af:gridCell>
+          </af:gridRow>
+        </af:panelGridLayout>
+      </af:panelHeader>
+    </af:form>
+  </af:document>
+</f:view>
