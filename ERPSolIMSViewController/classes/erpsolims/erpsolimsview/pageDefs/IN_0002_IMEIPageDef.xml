@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="IN_0002_IMEIPageDef"
+                Package="erpsolims.erpsolimsview.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InItemTransferNoteImeiByStnseqlineCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InItemTransferNoteImeiByStnseqlineCRUDIterator"/>
+    <searchRegion Binds="InItemTransferNoteImeiByStnseqlineCRUDIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="InItemTransferNoteImeiByStnseqlineCRUDQuery"/>
+    <iterator Binds="InItemTransferNoteCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InItemTransferNoteCRUDIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InItemTransferNoteImeiByStnseqlineCRUDIterator" id="InItemTransferNoteImeiByStnseqlineCRUD">
+      <nodeDefinition DefName="erpsolims.erpsolimsmodel.erpsolimsvo.InItemTransferNoteImeiView"
+                      Name="InItemTransferNoteImeiByStnseqlineCRUD0">
+        <AttrNames>
+          <Item Value="LineNo"/>
+          <Item Value="ItemRefId"/>
+          <Item Value="ImeiNo"/>
+          <Item Value="TempBoxNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="InItemTransferNoteImeiByStnseqlineCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ERPSolIMSAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ERPSolIMSAppModuleDataControl"/>
+    <methodAction id="doERPSolRemoveSTNBox" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doERPSolRemoveSTNBox" IsViewObjectMethod="true"
+                  DataControl="ERPSolIMSAppModuleDataControl"
+                  InstanceName="data.ERPSolIMSAppModuleDataControl.InItemTransferNoteImeiByStnseqlineCRUD"
+                  ReturnName="data.ERPSolIMSAppModuleDataControl.methodResults.doERPSolRemoveSTNBox_ERPSolIMSAppModuleDataControl_InItemTransferNoteImeiByStnseqlineCRUD_doERPSolRemoveSTNBox_result"/>
+    <attributeValues IterBinding="InItemTransferNoteCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

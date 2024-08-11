@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="IN_0007PageDef"
+                Package="erpsolims.erpsolimsview.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InDocumentShipmentHeaderCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InDocumentShipmentHeaderCRUDIterator"/>
+    <iterator Binds="InDocumentShipmentLinesDetCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InDocumentShipmentLinesDetCRUDIterator"/>
+    <page path="erpsoltemp.erpsoltempview.pageDefs.ERPSolutionTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="ShipmentHeaderId">
+      <AttrNames>
+        <Item Value="ShipmentHeaderId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="InDocumentShipmentHeaderCRUDIterator" StaticList="false" Uses="LovLocationid" id="Locationid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="ShipmentDate">
+      <AttrNames>
+        <Item Value="ShipmentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="InDocumentShipmentHeaderCRUDIterator" StaticList="false" Uses="LovtxtStoreName"
+                  id="txtStoreName"/>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Storeid">
+      <AttrNames>
+        <Item Value="Storeid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="VehicleNo">
+      <AttrNames>
+        <Item Value="VehicleNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="DriverName">
+      <AttrNames>
+        <Item Value="DriverName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="DriverContactNo">
+      <AttrNames>
+        <Item Value="DriverContactNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ERPSolIMSAppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ERPSolIMSAppModuleDataControl"/>
+    <action IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Previous" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="InDocumentShipmentHeaderCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="InDocumentShipmentHeaderCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="InDocumentShipmentLinesDetCRUDIterator" id="InDocumentShipmentLinesDetCRUD">
+      <nodeDefinition DefName="erpsolims.erpsolimsmodel.erpsolimsvo.InDocumentShipmentLinesVO"
+                      Name="InDocumentShipmentLinesDetCRUD0">
+        <AttrNames>
+          <Item Value="DocumentId"/>
+          <Item Value="DocumentType"/>
+          <Item Value="Quantity"/>
+          <Item Value="ShipmentLinesSno"/>
+          <Item Value="ShipmentHeaderSno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="InDocumentShipmentLinesDetCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="InDocumentShipmentLinesDetCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <methodAction IterBinding="InDocumentShipmentHeaderCRUDIterator" id="doSuperviseShipment" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="doSuperviseShipment" IsViewObjectMethod="false"
+                  DataControl="ERPSolIMSAppModuleDataControl"
+                  InstanceName="bindings.InDocumentShipmentHeaderCRUDIterator.currentRow" IsLocalObjectReference="true"
+                  ReturnName="data.ERPSolIMSAppModuleDataControl.methodResults.doSuperviseShipment_doSuperviseShipment_doSuperviseShipment_result"/>
+  </bindings>
+</pageDefinition>

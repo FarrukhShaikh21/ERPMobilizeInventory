@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="IN_0002_SEARCHPageDef"
+                Package="erpsolims.erpsolimsview.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InItemTransferNoteCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InItemTransferNoteCRUDIterator"/>
+    <searchRegion Criteria="InItemTransferNoteViewFindVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" Binds="InItemTransferNoteCRUDIterator"
+                  id="InItemTransferNoteViewFindVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InItemTransferNoteCRUDIterator" id="InItemTransferNoteCRUD">
+      <nodeDefinition DefName="erpsolims.erpsolimsmodel.erpsolimsvo.InItemTransferNoteView"
+                      Name="InItemTransferNoteCRUD0">
+        <AttrNames>
+          <Item Value="Stnno"/>
+          <Item Value="DateOfTransfer"/>
+          <Item Value="Locationid"/>
+          <Item Value="txtLocationName"/>
+          <Item Value="Sendingstoreid"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="Receivingstoreid"/>
+          <Item Value="txtReceivingSroreName"/>
+          <Item Value="Posted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
