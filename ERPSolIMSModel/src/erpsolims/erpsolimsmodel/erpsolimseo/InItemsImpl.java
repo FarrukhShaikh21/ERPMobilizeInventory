@@ -2250,7 +2250,7 @@ public class InItemsImpl extends ERPSolGlobalsEntityImpl {
         if (operation==DML_INSERT) {
            String pkValue=" P_ITEM_REF_ID.ID_ITEM_REF_ID('"+getSigroupid()+"')";
            
-           String result= ERPSolGlobClassModel.doGetERPSolPrimaryKeyValueModel(getDBTransaction(), pkValue, "in_items", null, null);
+           String result= ERPSolGlobClassModel.doGetERPSolPrimaryKeyValueModel(getDBTransaction(), pkValue, "DUAL", null, null);
            populateAttributeAsChanged(ITEMREFID, result);
             pkValue=" lpad(to_number(nvl(max(itemid),0)) + 1,15,'0')";
             result= ERPSolGlobClassModel.doGetERPSolPrimaryKeyValueModel(getDBTransaction(), pkValue, "in_items", null, null);
