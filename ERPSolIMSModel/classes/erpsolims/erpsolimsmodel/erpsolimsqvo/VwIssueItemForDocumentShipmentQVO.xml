@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="VwIssueItemForDocumentShipmentQVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="erpsolims.erpsolimsmodel.erpsolimsqvo.VwIssueItemForDocumentShipmentQVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_STOREID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT  so.source_doc_ref DOCUMENT_ID,  
+        SO.ISSUE_DATE DOCUMENT_DATE,     
+        ST.STORE_NAME STORE_NAME,             
+        SO.ISSUEDOCTYPEID DOC_TYPE_ID,             
+        SO.LOCATIONID   ,        
+        ST.STORE_NAME||' '||ISSUEDOCTYPEID||' '|| to_char(SO.ISSUE_DATE,'dd/mm/rrrr') DESCRIPTION    ,  
+        SUM(IIL.SHELFQTY) QUANTITY    
+FROM    In_Issued_Items SO  ,  
+        ALL_STORES ST    ,  
+        in_issued_items_lines iil , 
+        (SELECT SYSDATE-SP.PARAMETER_VALUE VW_SHIP_DAYS 
+         FROM SO_SALES_PARAMETER SP 
+         WHERE SP.PARAMETER_ID='IN_SHIPMENT_DAYS' 
+         ) VW_DAYS     
+WHERE   SO.POSTED='Y'  
+and     so.issueno=iil.issueno  
+AND     SO.STOREID=ST.STOREID   
+AND NOT EXISTS(SELECT '' FROM IN_DOCUMENT_SHIPMENT_LINES DSL WHERE DSL.DOCUMENT_ID=SO.SOURCE_DOC_REF AND DSL.DOCUMENT_TYPE=SO.ISSUEDOCTYPEID) 
+AND     SO.LOCATIONID=:P_ADF_LOCATIONID 
+AND     SO.STOREID=:P_ADF_STOREID 
+AND     SO.ISSUE_DATE>=VW_DAYS.VW_SHIP_DAYS 
+GROUP BY so.source_doc_ref ,  
+        SO.ISSUE_DATE ,     
+        ST.STORE_NAME ,             
+        SO.ISSUEDOCTYPEID ,             
+        SO.LOCATIONID   ,        
+        ST.STORE_NAME||' '||ISSUEDOCTYPEID||' '|| to_char(SO.ISSUE_DATE,'dd/mm/rrrr') 
+        ORDER BY SO.ISSUE_DATE DESC]]></SQLQuery>
+  <ViewAttribute
+    Name="DocumentId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCUMENT_ID"
+    Expression="DOCUMENT_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="18"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DOCUMENT_DATE"
+    Expression="DOCUMENT_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="StoreName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="75"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_NAME"
+    Expression="STORE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="75"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocTypeId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOC_TYPE_ID"
+    Expression="DOC_TYPE_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Locationid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATIONID"
+    Expression="LOCATIONID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="86"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="86"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Quantity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QUANTITY"
+    Expression="QUANTITY"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="DocumentId"/>
+    <Item Value="DocTypeId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="erpsolims.erpsolimsmodel.ERPSolIMSModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

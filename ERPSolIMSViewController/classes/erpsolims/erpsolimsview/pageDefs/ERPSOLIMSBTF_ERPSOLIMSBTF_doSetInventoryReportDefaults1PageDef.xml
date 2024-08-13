@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47"
+                id="ERPSOLIMSBTF_ERPSOLIMSBTF_doSetInventoryReportDefaults1PageDef"
+                Package="erpsolims.erpsolimsview.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doSetInventoryReportDefaults" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSetInventoryReportDefaults" IsViewObjectMethod="true"
+                  DataControl="ERPSolIMSAppModuleDataControl"
+                  InstanceName="data.ERPSolIMSAppModuleDataControl.VwInInventoryReportRO"
+                  ReturnName="data.ERPSolIMSAppModuleDataControl.methodResults.doSetInventoryReportDefaults_ERPSolIMSAppModuleDataControl_VwInInventoryReportRO_doSetInventoryReportDefaults_result"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.47" id="IN_0004_SEARCHPageDef"
+                Package="erpsolims.erpsolimsview.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InReceivedItemsCRUD" RangeSize="25" DataControl="ERPSolIMSAppModuleDataControl"
+              id="InReceivedItemsCRUDIterator"/>
+    <searchRegion Criteria="InReceivedItemsFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="InReceivedItemsCRUDIterator" id="InReceivedItemsFindVCQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InReceivedItemsCRUDIterator" id="InReceivedItemsCRUD">
+      <nodeDefinition DefName="erpsolims.erpsolimsmodel.erpsolimsvo.InReceivedItemsView" Name="InReceivedItemsCRUD0">
+        <AttrNames>
+          <Item Value="Rnoteno"/>
+          <Item Value="Locationid"/>
+          <Item Value="Storeid"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="Recvdoctypeid"/>
+          <Item Value="ReceivingDate"/>
+          <Item Value="SourceDocRef"/>
+          <Item Value="Posted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
