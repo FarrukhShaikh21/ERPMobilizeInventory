@@ -142,6 +142,8 @@ public class InItemsImpl extends ERPSolGlobalsEntityImpl {
         Discount,
         ItemCost,
         WcpShortName,
+        Colorid,
+        RetDays,
         InReceivedItemsLines,
         InItemTransferNoteLines,
         SoProducts,
@@ -287,6 +289,8 @@ public class InItemsImpl extends ERPSolGlobalsEntityImpl {
     public static final int DISCOUNT = AttributesEnum.Discount.index();
     public static final int ITEMCOST = AttributesEnum.ItemCost.index();
     public static final int WCPSHORTNAME = AttributesEnum.WcpShortName.index();
+    public static final int COLORID = AttributesEnum.Colorid.index();
+    public static final int RETDAYS = AttributesEnum.RetDays.index();
     public static final int INRECEIVEDITEMSLINES = AttributesEnum.InReceivedItemsLines.index();
     public static final int INITEMTRANSFERNOTELINES = AttributesEnum.InItemTransferNoteLines.index();
     public static final int SOPRODUCTS = AttributesEnum.SoProducts.index();
@@ -2176,6 +2180,38 @@ public class InItemsImpl extends ERPSolGlobalsEntityImpl {
      */
     public void setWcpShortName(String value) {
         setAttributeInternal(WCPSHORTNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for Colorid, using the alias name Colorid.
+     * @return the value of Colorid
+     */
+    public String getColorid() {
+        return (String) getAttributeInternal(COLORID);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Colorid.
+     * @param value value to set the Colorid
+     */
+    public void setColorid(String value) {
+        setAttributeInternal(COLORID, value);
+    }
+
+    /**
+     * Gets the attribute value for RetDays, using the alias name RetDays.
+     * @return the value of RetDays
+     */
+    public BigDecimal getRetDays() {
+        return (BigDecimal) getAttributeInternal(RETDAYS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for RetDays.
+     * @param value value to set the RetDays
+     */
+    public void setRetDays(BigDecimal value) {
+        setAttributeInternal(RETDAYS, value);
     }
 
     /**

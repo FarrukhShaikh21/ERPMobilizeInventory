@@ -57,6 +57,10 @@
     Name="AccAllDivisionsView"
     ViewObjectName="erpsolims.erpsolimsmodel.erpsolimsvo.AllDivisionsView"
     RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccFqColorVO"
+    ViewObjectName="erpsolims.erpsolimsmodel.erpsolimsvo.FqColorVO"
+    RowLevelBinds="true"/>
   <ListBinding
     Name="LovSigroupid"
     ListVOName="AccInStockItemGroupView"
@@ -528,6 +532,25 @@
     <AttrArray Name="AttrExpressions"/>
     <AttrArray Name="ListAttrNames">
       <Item Value="Divid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovColorid"
+    ListVOName="AccFqColorVO"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Colorid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Colorid"/>
     </AttrArray>
     <AttrArray Name="ListDisplayAttrNames">
       <Item Value="Description"/>
@@ -1434,6 +1457,26 @@
     EntityAttrName="WcpShortName"
     EntityUsage="InItems"
     AliasName="WCP_SHORT_NAME"/>
+  <ViewAttribute
+    Name="Colorid"
+    PrecisionRule="true"
+    EntityAttrName="Colorid"
+    EntityUsage="InItems"
+    AliasName="COLORID"
+    LOVName="LovColorid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RetDays"
+    PrecisionRule="true"
+    EntityAttrName="RetDays"
+    EntityUsage="InItems"
+    AliasName="RET_DAYS"/>
   <ViewCriteria
     Name="InItemsViewFindVC"
     ViewObjectName="erpsolims.erpsolimsmodel.erpsolimsvo.InItemsView"

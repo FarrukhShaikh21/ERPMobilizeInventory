@@ -89,5 +89,7 @@
         <Item Value="WcpShortName"/>
       </AttrNames>
     </attributeValues>
+    <list IterBinding="InItemsViewCRUDIterator" StaticList="false" Uses="LovColorid" id="Colorid" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

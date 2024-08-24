@@ -246,8 +246,17 @@
                             <f:validator binding="#{bindings.WcpShortName.validator}"/>
                           </af:inputText>
                         </af:gridCell>
-                        <af:gridCell id="gc33"/>
-                        <af:gridCell id="gc34"/>
+                        <af:gridCell id="gc33" halign="center" valign="middle">
+                          <af:outputLabel value="#{bindings.Colorid.label}" id="ol14"/>
+                        </af:gridCell>
+                        <af:gridCell id="gc34">
+                          <af:selectOneChoice value="#{bindings.Colorid.inputValue}" label="#{bindings.Colorid.label}"
+                                              required="#{bindings.Colorid.hints.mandatory}"
+                                              shortDesc="#{bindings.Colorid.hints.tooltip}" id="soc9" simple="true">
+                            <f:selectItems value="#{bindings.Colorid.items}" id="si9"/>
+                            <f:validator binding="#{bindings.Colorid.validator}"/>
+                          </af:selectOneChoice>
+                        </af:gridCell>
                       </af:gridRow>
                     </af:panelGridLayout>
                   </af:panelBox>
