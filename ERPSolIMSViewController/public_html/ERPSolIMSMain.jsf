@@ -6,12 +6,22 @@
         <af:form id="f1">
             <af:pageTemplate viewId="/ERPSolutionTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
                 <f:facet name="erptempmain">
-                    <af:panelBox id="pb1" showDisclosure="false" text="Inventory Management System">
-                        <f:facet name="toolbar">
-                            <af:link id="l1" action="ERPSOL-RETURN-FROM-IMS" partialSubmit="true"
-                                     icon="#{resource['images:imgHome.png']}"/>
+                    <af:decorativeBox id="db1" topHeight="30px">
+                        <f:facet name="center">
+                            <af:image source="#{resource['images:imgInvengory.png']}" id="i1"/>
                         </f:facet>
-                        <af:image source="#{resource['images:imgInvengory.png']}" id="i1"/>
+                        <f:facet name="top">
+                            <af:panelGroupLayout id="pgl1" layout="horizontal" halign="end">
+                                <af:link id="l1" action="ERPSOL-RETURN-FROM-IMS" partialSubmit="true"
+                                         icon="#{resource['images:imgHome.png']}"/>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:decorativeBox>
+                    <af:panelBox id="pb1" text="Inventory Management System" showDisclosure="false" showHeader="always"
+                                 rendered="false">
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t1"/>
+                        </f:facet>
                     </af:panelBox>
                 </f:facet>
                 <f:facet name="erptempleft"/>
