@@ -75,7 +75,7 @@ public class ERPSolIMSBean {
             ADFContext.getCurrent().getPageFlowScope().put("GLOB_USER_REGION", getERPSolStrUserCode().toString());
             ADFContext.getCurrent().getPageFlowScope().put("GLOB_USER_LOCATION",getERPSolStrUserLocationCode().toString());
             ADFContext.getCurrent().getPageFlowScope().put("GLOB_USER_STORE", getERPSolStrUserStoreCode().toString());
-            ADFContext.getCurrent().getPageFlowScope().put("GLOB_COMPANY_CODE", "D");
+            ADFContext.getCurrent().getPageFlowScope().put("GLOB_COMPANY_CODE", "M");
         } catch (Exception e) {
             e.printStackTrace();
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Users Defaults are not defined properly. Please Check"));
